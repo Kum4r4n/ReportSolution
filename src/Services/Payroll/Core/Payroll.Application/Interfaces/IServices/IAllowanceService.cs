@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Payroll.Application.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Payroll.Application.Interfaces.IServices
 {
     public interface IAllowanceService
     {
+        Task ImportData(StreamReader reader);
     }
 }
