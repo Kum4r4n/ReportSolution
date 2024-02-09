@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    container_name: sqlserver
+    ports:
+        - "7100"
+    environment:
+        - ACCEPT_EULA=Y 
+        - MSSQL_PID=Developer
+        - SA_PASSWORD=8jkGh47hnDw89Haq8LN2
+
+  payroll.api:
+    image: ${DOCKER_REGISTRY-}payrollapi
+    build:
+      context: .
+      dockerfile: src/Services/Payroll/Host/Payroll.API/Dockerfile
+    depends_on:
+          - sqlserver

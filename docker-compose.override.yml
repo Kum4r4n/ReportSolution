@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  payroll.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__SQL=Server=sqlserver; Database=identity-db; User Id=sa;Password=8jkGh47hnDw89Haq8LN2;Persist Security Info=False;Encrypt=False
+      - ASPNETCORE_URLS=;http://+:80
+    ports:
+      - "6301:80"
+      - "6302:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
