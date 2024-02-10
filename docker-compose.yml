@@ -19,3 +19,10 @@ services:
       dockerfile: src/Services/Payroll/Host/Payroll.API/Dockerfile
     depends_on:
           - sqlserver
+
+  report.gateway:
+    image: ${DOCKER_REGISTRY-}reportgateway
+    build:
+      context: .
+      dockerfile: src/Gateways/Report.Gateway/Dockerfile
+
