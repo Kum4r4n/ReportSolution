@@ -49,6 +49,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "src\Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Infrastructure", "src\Services\Identity\Infrastructure\Identity.Infrastructure\Identity.Infrastructure.csproj", "{E1E78294-F84B-4832-A0C6-23AEEA7BC2A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuldingBlocks", "BuldingBlocks", "{99C48F1F-59EF-4398-A0A8-8AA205846F03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "src\BuildingBlocks\Common\Common.csproj", "{EB2F24BC-76A3-481A-80FF-FAB465906CB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +99,10 @@ Global
 		{E1E78294-F84B-4832-A0C6-23AEEA7BC2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1E78294-F84B-4832-A0C6-23AEEA7BC2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1E78294-F84B-4832-A0C6-23AEEA7BC2A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB2F24BC-76A3-481A-80FF-FAB465906CB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2F24BC-76A3-481A-80FF-FAB465906CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2F24BC-76A3-481A-80FF-FAB465906CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2F24BC-76A3-481A-80FF-FAB465906CB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +129,8 @@ Global
 		{9653654B-982D-4B32-9F98-B9FA20A1E99B} = {75ABB99C-FA25-4D6C-98DB-88BC7CB9F370}
 		{72B8AD52-5642-49BA-83C3-43FBED4B52E4} = {CDFD4649-506A-41B7-83AB-4BBC46C19BF3}
 		{E1E78294-F84B-4832-A0C6-23AEEA7BC2A2} = {CF092F32-D740-4E4D-BD4F-E3F40893646C}
+		{99C48F1F-59EF-4398-A0A8-8AA205846F03} = {65562580-0216-445B-B154-E72EEEA5A011}
+		{EB2F24BC-76A3-481A-80FF-FAB465906CB1} = {99C48F1F-59EF-4398-A0A8-8AA205846F03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEA3BB80-3867-4D65-8219-E97E032C2EED}

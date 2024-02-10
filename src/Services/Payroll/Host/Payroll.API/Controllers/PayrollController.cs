@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Payroll.Application.Interfaces.IServices;
@@ -8,6 +9,7 @@ using System.Globalization;
 
 namespace Payroll.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PayrollController : ControllerBase

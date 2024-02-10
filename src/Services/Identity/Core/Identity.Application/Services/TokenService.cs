@@ -1,4 +1,5 @@
-﻿using Identity.Application.Interfaces.IServices;
+﻿using Identity.Application.Interfaces.IRepositories;
+using Identity.Application.Interfaces.IServices;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,6 @@
+using Common.Authentication;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Payroll.Application.Interfaces.IRepositories;
 using Payroll.Application.Interfaces.IServices;
 using Payroll.Application.Services;
@@ -10,15 +12,49 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-//db
-builder.Services.AddDbContext<PayrollDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SQL")));
+builder.Services.AddSwaggerGen(option =>
+{
+    option.AddSecurityDefinition(
+        "Bearer",
+        new OpenApiSecurityScheme
+        {
+            Description =
+                "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey
+        }
+    );
+    option.AddSecurityRequirement(
+        new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Id = "Bearer",
+                        Type = ReferenceType.SecurityScheme
+                    }
+                },
+                new List<string>()
+            }
+        }
+    );
+});
 
+//db
+builder.Services.AddDbContext<PayrollDbContext>(option =>
+    option.UseSqlServer(builder.Configuration.GetConnectionString("SQL"))
+);
 
 builder.Services.AddScoped<IAllowanceService, AllowanceService>();
 builder.Services.AddScoped<IAllowanceRepository, AllowanceRepository>();
+builder.Services.AddAuth("OrelIT-MEp9AuVjXeGgDf3GDshnLapgpW7OM8biQ5c6moJ9");
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -35,7 +71,7 @@ var db = scope.ServiceProvider.GetRequiredService<PayrollDbContext>();
 db.Database.Migrate();
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
+app.UseAuth();
 app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.MapControllers();
 

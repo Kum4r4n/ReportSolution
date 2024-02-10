@@ -26,9 +26,9 @@ namespace Identity.Infrastructure.Repositories
             return data.Entity;
         }
 
-        public async Task<User> Get(Guid id)
+        public async Task<User> Get(string email)
         {
-            var data = await _dbContext.Users.SingleOrDefaultAsync(s => s.Id == id);
+            var data = await _dbContext.Users.SingleOrDefaultAsync(s => s.Email == email);
             return data;
         }
     }

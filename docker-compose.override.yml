@@ -4,10 +4,10 @@ services:
   payroll.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__SQL=Server=sqlserver; Database=identity-db; User Id=sa;Password=8jkGh47hnDw89Haq8LN2;Persist Security Info=False;Encrypt=False
+      - ConnectionStrings__SQL=Server=sqlserver; Database=payroll-db; User Id=sa;Password=8jkGh47hnDw89Haq8LN2;Persist Security Info=False;Encrypt=False
       - ASPNETCORE_URLS=http://+:80
     ports:
-      - "6301:80"
+      - "80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -19,6 +19,17 @@ services:
     ports:
       - "7002:80"
       - "7001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  identity.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__SQL=Server=sqlserver; Database=identity-db; User Id=sa;Password=8jkGh47hnDw89Haq8LN2;Persist Security Info=False;Encrypt=False
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

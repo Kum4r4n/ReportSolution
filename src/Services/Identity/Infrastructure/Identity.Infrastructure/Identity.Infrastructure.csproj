@@ -20,8 +20,4 @@
 	  <ProjectReference Include="..\..\Core\Identity.Domain\Identity.Domain.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Configuration\" />
-	</ItemGroup>
-
 </Project>

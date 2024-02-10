@@ -26,3 +26,11 @@ services:
       context: .
       dockerfile: src/Gateways/Report.Gateway/Dockerfile
 
+  identity.api:
+    image: ${DOCKER_REGISTRY-}identityapi
+    build:
+      context: .
+      dockerfile: src/Services/Identity/Host/Identity.API/Dockerfile
+    depends_on:
+        - sqlserver
+
