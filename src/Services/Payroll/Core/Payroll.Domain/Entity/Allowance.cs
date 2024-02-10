@@ -11,7 +11,7 @@ namespace Payroll.Domain.Entity
         public Guid Id { get; set; }
         public int EmployeeId { get; set; }
         public int DepartmentId { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public long Amount { get; set; }
         public string Status { get; set; } = "";
 

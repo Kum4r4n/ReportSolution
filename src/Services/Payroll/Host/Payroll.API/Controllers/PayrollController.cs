@@ -25,12 +25,26 @@ namespace Payroll.API.Controllers
             try
             {
                 var reader = new StreamReader(formFile.OpenReadStream());
-                await _allowanceService.ImportData(reader);
+                await _allowanceService.ImportDataAsync(reader);
                 return Ok(new ImportStatusModel(true, "CSV allowance data imported successfully"));
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new ImportStatusModel(false, "CSV allowance data import failure"));
+            }
+        }
+
+        [HttpGet("GetData")]
+        public async Task<IActionResult> GetDataAsync()
+        {
+            try
+            {
+                var data = await _allowanceService.GetDataAsync();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Something went wrong, please try again later!");
             }
         }
     }

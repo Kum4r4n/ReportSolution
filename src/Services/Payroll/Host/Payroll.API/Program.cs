@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Payroll.Application.Interfaces.IRepositories;
+using Payroll.Application.Interfaces.IServices;
+using Payroll.Application.Services;
 using Payroll.Infrastructure.Context;
+using Payroll.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +15,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //db
 builder.Services.AddDbContext<PayrollDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("SQL")));
+
+
+builder.Services.AddScoped<IAllowanceService, AllowanceService>();
+builder.Services.AddScoped<IAllowanceRepository, AllowanceRepository>();
 
 var app = builder.Build();
 

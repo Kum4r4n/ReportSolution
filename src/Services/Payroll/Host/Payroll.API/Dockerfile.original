@@ -9,9 +9,6 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/Services/Payroll/Host/Payroll.API/Payroll.API.csproj", "src/Services/Payroll/Host/Payroll.API/"]
-COPY ["src/Services/Payroll/Infrastructure/Payroll.Infrastructure/Payroll.Infrastructure.csproj", "src/Services/Payroll/Infrastructure/Payroll.Infrastructure/"]
-COPY ["src/Services/Payroll/Core/Payroll.Application/Payroll.Application.csproj", "src/Services/Payroll/Core/Payroll.Application/"]
-COPY ["src/Services/Payroll/Core/Payroll.Domain/Payroll.Domain.csproj", "src/Services/Payroll/Core/Payroll.Domain/"]
 RUN dotnet restore "./src/Services/Payroll/Host/Payroll.API/./Payroll.API.csproj"
 COPY . .
 WORKDIR "/src/src/Services/Payroll/Host/Payroll.API"
