@@ -39,19 +39,21 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{E0EEBD99-4183-4C57-A8A3-9A08254090D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Gateway", "src\Gateways\Report.Gateway\Report.Gateway.csproj", "{06FD4D8F-B723-41BA-9742-C36D555076DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Gateway", "src\Gateways\Report.Gateway\Report.Gateway.csproj", "{06FD4D8F-B723-41BA-9742-C36D555076DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Application", "src\Services\Identity\Core\Identity.Application\Identity.Application.csproj", "{2E6E0A42-D1DA-4575-8879-721F4D27CC1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Application", "src\Services\Identity\Core\Identity.Application\Identity.Application.csproj", "{2E6E0A42-D1DA-4575-8879-721F4D27CC1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Domain", "src\Services\Identity\Core\Identity.Domain\Identity.Domain.csproj", "{9653654B-982D-4B32-9F98-B9FA20A1E99B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Domain", "src\Services\Identity\Core\Identity.Domain\Identity.Domain.csproj", "{9653654B-982D-4B32-9F98-B9FA20A1E99B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.API", "src\Services\Identity\Host\Identity.API\Identity.API.csproj", "{72B8AD52-5642-49BA-83C3-43FBED4B52E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.API", "src\Services\Identity\Host\Identity.API\Identity.API.csproj", "{72B8AD52-5642-49BA-83C3-43FBED4B52E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Infrastructure", "src\Services\Identity\Infrastructure\Identity.Infrastructure\Identity.Infrastructure.csproj", "{E1E78294-F84B-4832-A0C6-23AEEA7BC2A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Infrastructure", "src\Services\Identity\Infrastructure\Identity.Infrastructure\Identity.Infrastructure.csproj", "{E1E78294-F84B-4832-A0C6-23AEEA7BC2A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuldingBlocks", "BuldingBlocks", "{99C48F1F-59EF-4398-A0A8-8AA205846F03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "src\BuildingBlocks\Common\Common.csproj", "{EB2F24BC-76A3-481A-80FF-FAB465906CB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "src\BuildingBlocks\Common\Common.csproj", "{EB2F24BC-76A3-481A-80FF-FAB465906CB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payroll.Test", "src\Tests\PayrollApplicationTest\Payroll.Test.csproj", "{E41EEEF4-CE3C-416C-81E6-823DE8D359BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +105,10 @@ Global
 		{EB2F24BC-76A3-481A-80FF-FAB465906CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB2F24BC-76A3-481A-80FF-FAB465906CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB2F24BC-76A3-481A-80FF-FAB465906CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E41EEEF4-CE3C-416C-81E6-823DE8D359BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E41EEEF4-CE3C-416C-81E6-823DE8D359BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E41EEEF4-CE3C-416C-81E6-823DE8D359BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E41EEEF4-CE3C-416C-81E6-823DE8D359BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +137,7 @@ Global
 		{E1E78294-F84B-4832-A0C6-23AEEA7BC2A2} = {CF092F32-D740-4E4D-BD4F-E3F40893646C}
 		{99C48F1F-59EF-4398-A0A8-8AA205846F03} = {65562580-0216-445B-B154-E72EEEA5A011}
 		{EB2F24BC-76A3-481A-80FF-FAB465906CB1} = {99C48F1F-59EF-4398-A0A8-8AA205846F03}
+		{E41EEEF4-CE3C-416C-81E6-823DE8D359BD} = {5E3E0AF9-1BC9-407C-8ACB-76579DB9BCC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEA3BB80-3867-4D65-8219-E97E032C2EED}

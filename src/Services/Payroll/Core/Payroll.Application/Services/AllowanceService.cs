@@ -23,36 +23,46 @@ namespace Payroll.Application.Services
             _allowanceRepository = allowanceRepository;
         }
 
-        public async Task ImportDataAsync(StreamReader reader)
+        public async Task<List<Allowance>> ImportDataAsync(StreamReader reader)
         {
-            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
+            try
             {
-                HasHeaderRecord = true,
-                IgnoreBlankLines = true
-            };
-            var csv = new CsvReader(reader, configuration);
+                var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    HasHeaderRecord = true,
+                    IgnoreBlankLines = true
+                };
+                var csv = new CsvReader(reader, configuration);
 
-            //Employee ID, Department ID,Date,Amount,Status
-            //,,,,
-            //100,1,20222-10-22,10000,Approved
-            //300,1,20222-10-26,500000,Pending
-            //180,1,20222-10-22,18000,Approved
-            //250,1,20222-10-26,650000,Approved
-            //The above sample has the wrong date format; there is an extra '2' in the year section. Therefore, I save this date as a string.
+                //Employee ID, Department ID,Date,Amount,Status
+                //,,,,
+                //100,1,20222-10-22,10000,Approved
+                //300,1,20222-10-26,500000,Pending
+                //180,1,20222-10-22,18000,Approved
+                //250,1,20222-10-26,650000,Approved
+                //The above sample has the wrong date format; there is an extra '2' in the year section. Therefore, I save this date as a string.
 
-            var data = csv.GetRecords<AllowanceCSVModel>();
-            var entities = data.Select(s => new Allowance()
+                var data = csv.GetRecords<AllowanceCSVModel>();
+                var entities = data.Select(s => new Allowance()
+                {
+                    Id = Guid.NewGuid(),
+                    Amount = s.Amount,
+                    Date = s.Date,
+                    DepartmentId = s.DepartmentId,
+                    EmployeeId = s.EmployeeId,
+                    Status = s.Status
+
+                }).ToList();
+
+                var savedData = await _allowanceRepository.AddAsync(entities);
+                return savedData;
+            }
+            catch (Exception ex)
             {
-                Id = Guid.NewGuid(),
-                Amount = s.Amount,
-                Date = s.Date,
-                DepartmentId = s.DepartmentId,
-                EmployeeId = s.EmployeeId,
-                Status = s.Status
 
-            }).ToList();
-
-            var savedData = await _allowanceRepository.AddAsync(entities);
+                throw;
+            }
+           
         }
 
         public async Task<List<AllowanceResponseModel>> GetDataAsync()
