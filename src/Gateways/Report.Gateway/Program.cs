@@ -23,10 +23,12 @@ builder.Services.AddEndpointsApiExplorer();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwaggerForOcelotUI();
-}
+//if (app.Environment.IsDevelopment()) //this line is commented because we need to show the swagger in production server
+//{
+//    app.UseSwaggerForOcelotUI();
+//}
+
+app.UseSwaggerForOcelotUI();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
