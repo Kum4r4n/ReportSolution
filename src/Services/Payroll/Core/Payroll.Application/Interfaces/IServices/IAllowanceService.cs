@@ -10,7 +10,7 @@ namespace Payroll.Application.Interfaces.IServices
 {
     public interface IAllowanceService
     {
-        Task<List<Allowance>> ImportDataAsync(StreamReader reader);
+        Task ImportDataAsync(Stream stream);
         Task<List<AllowanceResponseModel>> GetDataAsync();
     }
 }

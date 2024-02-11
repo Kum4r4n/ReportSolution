@@ -33,5 +33,33 @@ namespace Payroll.Test
             Assert.True(data.Count > 0);
 
         }
+
+        [Fact]
+        public async Task ImportAllowances_ShouldReturnSuccessResponse()
+        {
+            // Arrange
+            var stream = new MemoryStream();
+            var streamWriter = new StreamWriter(stream);
+
+            // Write CSV content to the stream
+            streamWriter.Write("EmployeeId,DepartmentId,Date,Amount,Status\n" +
+                               "100,1,2022-10-22,10000,Approved\n" +
+                               "300,1,2022-10-26,500000,Pending\n" +
+                               "180,1,2022-10-22,18000,Approved\n" +
+                               "250,1,2022-10-26,650000,Approved");
+
+            streamWriter.Flush();
+            stream.Position = 0;
+
+            _mockAllowanceRepository.Setup(repo => repo.AddAsync(It.IsAny<List<Allowance>>())).ReturnsAsync(new List<Allowance>());
+
+            var _allowanceService = new AllowanceService(_mockAllowanceRepository.Object);
+
+            // Act
+            await _allowanceService.ImportDataAsync(stream);
+
+            // Assert
+            _mockAllowanceRepository.Verify(repo => repo.AddAsync(It.IsAny<List<Allowance>>()), Times.Once);
+        }
     }
 }

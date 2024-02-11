@@ -26,8 +26,7 @@ namespace Payroll.API.Controllers
         {
             try
             {
-                var reader = new StreamReader(formFile.OpenReadStream());
-                await _allowanceService.ImportDataAsync(reader);
+                await _allowanceService.ImportDataAsync(formFile.OpenReadStream());
                 return Ok(new ImportStatusModel(true, "CSV allowance data imported successfully"));
             }
             catch (Exception ex)
